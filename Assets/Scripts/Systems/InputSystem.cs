@@ -6,6 +6,7 @@ public class InputSystem :  IEcsRunSystem
 {
     private EcsPool<TargetPositionComponent> _targetPositionPool;
     private readonly EcsFilter _filterInput;
+    
     public InputSystem(EcsFilter filterInput)
     {
         _filterInput = filterInput;

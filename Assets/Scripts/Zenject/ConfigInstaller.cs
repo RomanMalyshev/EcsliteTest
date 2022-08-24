@@ -7,10 +7,12 @@ public class ConfigInstaller : ScriptableObjectInstaller<ConfigInstaller>
 {
     public PlayerViewConfig PlayerViewConfig;
     public PlayerConfig PlayerConfig;
+    public GameConfig GameConfig;
     
     public override void InstallBindings()
     {
         Container.Bind<PlayerViewConfig>().FromInstance(PlayerViewConfig).AsSingle().NonLazy();
         Container.Bind<PlayerConfig>().FromInstance(PlayerConfig).AsSingle().NonLazy();
+        Container.Bind<GameConfig>().FromInstance(GameConfig).AsSingle().NonLazy();
     }
 }
