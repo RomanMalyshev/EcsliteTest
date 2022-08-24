@@ -1,4 +1,5 @@
 ﻿using System;
+using Components;
 using Config;
 using Leopotam.EcsLite;
 using Systems;
@@ -30,6 +31,16 @@ public class Startup: IInitializable, ITickable, IDisposable
         var playerViewInit = new PlayerViewInitSystem(_playerViewConfig);
         
         _initSystems.Add(playerInit).Add(playerViewInit).Init();
+        
+        
+        
+        _runSystems =  new EcsSystems(_world);
+        
+        var filterInput = _world.Filter<PlayerTagComponent>().Inc<TargetPositionComponent>().End();
+        var inputSystem = new InputSystem(filterInput);
+        
+        _runSystems.Add(inputSystem).Init();
+        
     }
 
     public void Tick()

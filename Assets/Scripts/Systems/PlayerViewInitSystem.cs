@@ -7,7 +7,7 @@ namespace Systems
 {
     public class PlayerViewInitSystem: IEcsInitSystem
     {
-        private PlayerViewConfig _playerViewConfig;
+        private readonly PlayerViewConfig _playerViewConfig;
         
         public PlayerViewInitSystem(PlayerViewConfig playerViewConfig)
         {

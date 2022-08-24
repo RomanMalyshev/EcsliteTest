@@ -7,7 +7,7 @@ namespace Systems
     public class PlayerInitSystem: IEcsInitSystem
     {
         
-        private PlayerConfig _playerConfig;
+        private readonly PlayerConfig _playerConfig;
         
         public PlayerInitSystem(PlayerConfig playerConfig)
         {
@@ -21,10 +21,12 @@ namespace Systems
             
             var playerPool = world.GetPool<PlayerTagComponent>();
             var positionPool = world.GetPool<PositionComponent>();
+            var targetPositionPool = world.GetPool<TargetPositionComponent>();
             var speedPool = world.GetPool<SpeedComponent>();
 
             playerPool.Add(playerEntity);
             positionPool.Add(playerEntity);
+            targetPositionPool.Add(playerEntity);
             speedPool.Add(playerEntity).Speed = _playerConfig.Speed;
         }
     }
