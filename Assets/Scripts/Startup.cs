@@ -3,6 +3,7 @@ using Components;
 using Config;
 using Interfaces;
 using Leopotam.EcsLite;
+using Level_Data;
 using Systems;
 using Zenject;
 
@@ -18,6 +19,8 @@ public class Startup: IInitializable, ITickable, IDisposable
     private GameConfig _gameConfig;
     private DoorsConfig _doorsConfig;
     private ButtonsConfig _buttonsConfig;
+
+    private DoorViewData[] _doorsView;
     
     private IGameTime _gameTime;
     
@@ -28,7 +31,8 @@ public class Startup: IInitializable, ITickable, IDisposable
         GameConfig gameConfig,
         IGameTime gameTime,
         DoorsConfig doorsConfig,
-        ButtonsConfig buttonsConfig)
+        ButtonsConfig buttonsConfig,
+        DoorViewData[] doorsView)
     {
         _playerConfig = playerConfig;
         _playerViewConfig = playerViewConfig;
@@ -36,6 +40,7 @@ public class Startup: IInitializable, ITickable, IDisposable
         _gameTime = gameTime;
         _doorsConfig = doorsConfig;
         _buttonsConfig = buttonsConfig;
+        _doorsView = doorsView;
     }
 
     public void Initialize()
@@ -48,12 +53,15 @@ public class Startup: IInitializable, ITickable, IDisposable
 
         var doorInit = new DoorInitSystem(_doorsConfig);
         var buttonInit = new ButtonInitSystem(_buttonsConfig);
+        var doorViewInit = new DoorViewInitSystem(_doorsView);
+        
         
         _initSystems.
             Add(playerInit).
             Add(playerViewInit).
             Add(doorInit).
             Add(buttonInit).
+            Add(doorViewInit).
             Init();
         
         _runSystems =  new EcsSystems(_world);
