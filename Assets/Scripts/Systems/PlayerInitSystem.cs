@@ -23,12 +23,14 @@ namespace Systems
             var targetPositionPool = world.GetPool<TargetPositionComponent>();
             var speedPool = world.GetPool<SpeedComponent>();
             var movablePool = world.GetPool<MovableComponent>();
+            var directionPool = world.GetPool<DirectionComponent>();
 
             playerPool.Add(playerEntity);
             positionPool.Add(playerEntity);
             targetPositionPool.Add(playerEntity);
             speedPool.Add(playerEntity).Speed = _playerConfig.Speed;
             movablePool.Add(playerEntity).IsMove = false;
+            directionPool.Add(playerEntity);
         }
     }
 }

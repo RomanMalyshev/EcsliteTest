@@ -55,7 +55,32 @@ public class Startup: IInitializable, ITickable, IDisposable
             End();
         var positionCalculationSystem = new PositionCalculationSystem(_gameConfig,_gameTime,filterPositionCalculation);
         
-        _runSystems.Add(inputSystem).Add(positionCalculationSystem).Init();
+        
+        var filterMove = _world.
+            Filter<TransformComponent>().
+            Inc<PositionComponent>().
+            End();
+
+        var moveSystem = new MoveSystem(filterMove);
+        
+        var filterMoveAnimation = _world.Filter<AnimatorComponent>().Inc<MovableComponent>().End();
+        var moveAnimationSystem = new MoveAnimationSystem(filterMoveAnimation);
+        
+        var directionFilter = _world.Filter<MovableComponent>().
+            Inc<DirectionComponent>().
+            Inc<TransformComponent>().
+            Inc<TargetPositionComponent>().
+            End();
+
+        var directionSystem = new DirectionSystem(directionFilter);
+        
+        _runSystems.
+            Add(inputSystem).
+            Add(positionCalculationSystem).
+            Add(moveSystem).
+            Add(moveAnimationSystem).
+            Add(directionSystem).
+            Init();
     }
 
     public void Tick()
