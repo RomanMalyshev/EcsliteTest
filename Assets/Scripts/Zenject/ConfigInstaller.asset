@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fed88943f16495daf1c75d60ab859d8, type: 3}
   m_Name: ConfigInstaller
   m_EditorClassIdentifier: 
+  DoorsConfig: {fileID: 11400000, guid: f65e4e0a091620e4592f9ddee226f245, type: 2}
+  ButtonsConfig: {fileID: 11400000, guid: 41c39c0f3dd39194da19ff3c1a04c5d3, type: 2}
   PlayerViewConfig: {fileID: 11400000, guid: 7e0d8a5b2cd345b45a98008e8fd2666e, type: 2}
   PlayerConfig: {fileID: 11400000, guid: 5dd65f8e8111b7e4498cfe0ac2a08757, type: 2}
   GameConfig: {fileID: 11400000, guid: 47cc679d3c9d9214babd868a1ad95ccc, type: 2}

@@ -16,6 +16,8 @@ public class Startup: IInitializable, ITickable, IDisposable
     private PlayerConfig _playerConfig;
     private PlayerViewConfig _playerViewConfig;
     private GameConfig _gameConfig;
+    private DoorsConfig _doorsConfig;
+    private ButtonsConfig _buttonsConfig;
     
     private IGameTime _gameTime;
     
@@ -24,12 +26,16 @@ public class Startup: IInitializable, ITickable, IDisposable
         PlayerConfig playerConfig,
         PlayerViewConfig playerViewConfig,
         GameConfig gameConfig,
-        IGameTime gameTime)
+        IGameTime gameTime,
+        DoorsConfig doorsConfig,
+        ButtonsConfig buttonsConfig)
     {
         _playerConfig = playerConfig;
         _playerViewConfig = playerViewConfig;
         _gameConfig = gameConfig;
         _gameTime = gameTime;
+        _doorsConfig = doorsConfig;
+        _buttonsConfig = buttonsConfig;
     }
 
     public void Initialize()
@@ -39,8 +45,16 @@ public class Startup: IInitializable, ITickable, IDisposable
         
         var playerInit = new PlayerInitSystem(_playerConfig);
         var playerViewInit = new PlayerViewInitSystem(_playerViewConfig);
+
+        var doorInit = new DoorInitSystem(_doorsConfig);
+        var buttonInit = new ButtonInitSystem(_buttonsConfig);
         
-        _initSystems.Add(playerInit).Add(playerViewInit).Init();
+        _initSystems.
+            Add(playerInit).
+            Add(playerViewInit).
+            Add(doorInit).
+            Add(buttonInit).
+            Init();
         
         _runSystems =  new EcsSystems(_world);
         
