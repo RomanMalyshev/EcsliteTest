@@ -87,13 +87,18 @@ public class Startup: IInitializable, ITickable, IDisposable
             End();
 
         var directionSystem = new DirectionSystem(directionFilter);
-        
+
+
+        var buttonActivateSystem = new ButtonActivateSystem(_gameConfig);
+        var doorActivateSystem = new DoorActivateSystem();
         _runSystems.
             Add(inputSystem).
             Add(positionCalculationSystem).
             Add(moveSystem).
             Add(moveAnimationSystem).
             Add(directionSystem).
+            Add(buttonActivateSystem).
+            Add(doorActivateSystem).
             Init();
     }
 

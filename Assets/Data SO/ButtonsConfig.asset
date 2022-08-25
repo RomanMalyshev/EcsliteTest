@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: ButtonsConfig
   m_EditorClassIdentifier: 
   Buttons:
-  - Position: {x: -5, y: -0.15, z: 6.53}
-  - Position: {x: 5, y: -0.24, z: 6.9}
+  - Id: 0
+    Position: {x: -5, y: -0.15, z: 6.53}
+  - Id: 1
+    Position: {x: 5, y: -0.24, z: 6.9}

@@ -23,7 +23,9 @@ namespace Systems
                 
                 var buttonPool = world.GetPool<ButtonTagComponent>();
                 var positionPool = world.GetPool<PositionComponent>();
+                var idPool = world.GetPool<IdComponent>();
 
+                idPool.Add(entity).Id = button.Id;
                 buttonPool.Add(entity);
                 positionPool.Add(entity).Position = button.Position;
             }

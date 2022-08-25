@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: DoorConfig
   m_EditorClassIdentifier: 
   Doors:
-  - Position: {x: 5, y: 0.7642, z: 9.87}
+  - Id: 0
+    Position: {x: 5, y: 0.7642, z: 9.87}
     MoveSpeed: 3
     OpenOffsetPosition: {x: 0, y: 0, z: 5}
-  - Position: {x: -5, y: 0.7642, z: 9.84}
+  - Id: 1
+    Position: {x: -5, y: 0.7642, z: 9.84}
     MoveSpeed: 3
     OpenOffsetPosition: {x: 0, y: 0, z: -5}
