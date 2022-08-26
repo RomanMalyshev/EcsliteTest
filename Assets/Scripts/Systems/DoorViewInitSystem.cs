@@ -20,15 +20,15 @@ namespace Systems
             
             var transformPool = world.GetPool<TransformComponent>();
             var idPool = world.GetPool<IdComponent>();
+            var positionPool =world.GetPool<PositionComponent>();
 
             foreach (var entity in filter)
             {
                 foreach (var doorView in _doorsView)
                 {
-                    if (idPool.Get(entity).Id == doorView.Id)
-                    {
-                        transformPool.Add(entity).Transform = doorView.Transform;
-                    }
+                    if (idPool.Get(entity).Id != doorView.Id) continue;
+                    doorView.Transform.position = positionPool.Get(entity).Position;
+                    transformPool.Add(entity).Transform = doorView.Transform;
                 }
             }
         }

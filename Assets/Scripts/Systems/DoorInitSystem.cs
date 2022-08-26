@@ -15,7 +15,6 @@ namespace Systems
 
         public void Init(IEcsSystems systems)
         {
-            
             var world = systems.GetWorld();
             var doorPool = world.GetPool<DoorTagComponent>();
             var positionPool = world.GetPool<PositionComponent>();
